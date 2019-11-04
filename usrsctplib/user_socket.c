@@ -3090,6 +3090,8 @@ sctp_userspace_ip_output(int *result, struct mbuf *o_pak,
 			/* TODO get addr of outgoing interface */
 			SCTP_PRINTF("Why did the SCTP implementation did not choose a source address?\n");
 		}
+		//tzimmermann: Next line added
+		ip->ip_src.s_addr = INADDR_ANY;
 		/* TODO need to worry about ro->ro_dst as in ip_output? */
 #if defined(__Userspace_os_Linux) || defined (__Userspace_os_Windows) || (defined(__Userspace_os_FreeBSD) && (__FreeBSD_version >= 1100030))
 		/* need to put certain fields into network order for Linux */
